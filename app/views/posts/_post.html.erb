@@ -1,0 +1,17 @@
+<!-- いいね機能 -->
+  <% if post.favorited_by?(current_user) %>
+    <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+      <span class="glyphicon glyphicon-heart"><%= post.favorites.count%></span>
+    <% end %>
+  <% else %>
+    <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+      <span class="glyphicon glyphicon-heart-empty"><%= post.favorites.count %></span>
+    <% end %>
+  <% end %>
+
+  <% if post.user == current_user %>
+	<div>
+  		<%= link_to 'Edit', edit_post_path(post) %>
+  		<%= link_to 'Destroy', post, method: :delete, data: { confirm: '本当に消しますか？' } %>
+ 	</div>
+<% end %>

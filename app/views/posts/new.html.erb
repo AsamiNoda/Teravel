@@ -1,2 +1,14 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>postを追加する</h1>
+
+ <%= form_with model:@post, url:posts_path do |f| %>
+  	<%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", size:"300x300" %>
+    <%= f.attachment_field :post_image %>
+  <p>説明</p>
+    <%= f.text_area :body %>
+ <p>タグ</p>
+ <p>複数の場合は半角の空欄を入れてください</p>
+    <%= f.text_field :tag_name %>
+  <div>
+    <%= f.submit "更新" %>
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<table class="col-xs-4">
+	<tbody>
+		<% posts.each do |post| %>
+			<tr  class="pull-left">
+				<td>
+					<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded"), post_path(post) %>
+				</td>
+				<td><%= post.body %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

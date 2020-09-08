@@ -1,10 +1,17 @@
 <header>
 	<nav>
 		<ul>
-			<li><%= link_to 'Home', room_path %></li>
+			<li><%= link_to 'Home', root_path %></li>
 			<li><%= link_to 'About', home_about_path %></li>
 			<li><%= link_to 'Posts', posts_path %></li>
-			<li><%= link_to 'Users', users_path %></li>
+			<% if user_signed_in? %>
+				<li><%= link_to 'New Post', new_post_path %></li>
+				<li><%= link_to 'mypages', user_path(current_user) %></li>
+				<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+			<% else %>
+				<li><%= link_to 'Login', new_user_session_path %></li>
+				<li><%= link_to 'Sign up', new_user_registration_path %></li>
+			<% end %>
 		</ul>
 	</nav>
 </header>

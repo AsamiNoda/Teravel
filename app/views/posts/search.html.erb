@@ -1,0 +1,7 @@
+<% @tag_list.each do |list| %>
+	<%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
+<% end %>
+
+<p>タグが<%= @tag.tag_name %>の投稿一覧</p>
+
+<%= render 'posts/index',posts: @posts %>

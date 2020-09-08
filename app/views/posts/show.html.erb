@@ -1,2 +1,20 @@
 <h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= attachment_image_tag @post, :post_image, format: "jpeg", fallback: "no_image.jpeg", size:"500x500", class: "img-rounded" %>
+<%= @post.body %>
+<%= link_to @post.user.name, (@post.user) %>
+
+<% @post_tags.each do |tag| %>
+	<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+<% end %>
+
+ <div class="post_<%= @post.id %>">
+ 	<%= render 'posts/post', post: @post %>
+ </div>
+ <div class="comment_<%= @post.id %>">
+ 	<%= render 'post_comments/index', post_comments: @post_comments %>
+ </div>
+
+<%= form_with model: [@post, @post_comment], data: {remote: true} do |f| %>
+	<%= f.text_area :comment, size: "90x5" %>
+	<%= f.submit "送信" %>
+<% end %>
