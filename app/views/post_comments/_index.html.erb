@@ -1,16 +1,18 @@
-<!-- コメント内容(２件) ------------------------------------------------------------------>
-<%= post_comments.count %>件コメント
-<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
-<% post_comments.first(2).each do |post_comment| %>
+<!-- コメント内容(3件) ------------------------------------------------------------------>
+<p><%= post_comments.count %>件のコメント</p>
+<% if post_comments.count > 3 %>
+	<h6 class="more" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">もっと見る....</h6>
+<% end %>
+<% post_comments.first(3).each do |post_comment| %>
   <% unless post_comment.id.nil? %>
-    <%= link_to user_path(post_comment.user), class: "user_#{post_comment.user.id}" do %>
-        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
-        <%= post_comment.user.name %>
-	<% end %>
     <div class="comment-entry">
+	    <%= link_to user_path(post_comment.user), class: "user_#{post_comment.user.id}" do %>
+	        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+	        <%= post_comment.user.name %>
+		<% end %>
         <%= post_comment.comment %>
         <% if post_comment.user == current_user %>
-        	<%= link_to 'Destroy', post_post_comments_path(post_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %>
+        	<%= link_to '', post_post_comments_path(post_comment), class: 'btn-sm btn-default glyphicon glyphicon-trash', method: :delete, remote: true %>
         <% end %>
         <span class="comment-date pull-right">
           <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
@@ -18,18 +20,18 @@
      </div>
   <% end %>
 <% end %>
-<!-- コメント内容(3件目以降) ------------------------------------------------------------------>
+<!-- コメント内容(4件目以降) ------------------------------------------------------------------>
     <div class="collapse" id="collapseExample">
-		 <% post_comments.first(2).each do |post_comment| %>
+		 <% post_comments.first(3).each do |post_comment| %>
 		  <% unless post_comment.id.nil? %>
-		    <%= link_to user_path(post_comment.user), class: "user_#{post_comment.user.id}" do %>
-		        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
-		        <%= post_comment.user.name %>
-			<% end %>
 		    <div class="comment-entry">
+			    <%= link_to user_path(post_comment.user), class: "user_#{post_comment.user.id}" do %>
+			        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+			        <%= post_comment.user.name %>
+				<% end %>
 		        <%= post_comment.comment %>
 		        <% if post_comment.user == current_user %>
-		        	<%= link_to 'Destroy', post_post_comments_path(post_comment), class: 'btn-sm btn-danger', method: :delete, remote: true %>
+        		<%= link_to '', post_post_comments_path(post_comment), class: 'btn-sm btn-default glyphicon glyphicon-trash', method: :delete, remote: true %>
 		        <% end %>
 		        <span class="comment-date pull-right">
 		          <%= post_comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>

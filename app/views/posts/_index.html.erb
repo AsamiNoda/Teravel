@@ -1,12 +1,25 @@
-<table class="col-xs-4">
-	<tbody>
-		<% posts.each do |post| %>
-			<tr  class="pull-left">
-				<td>
-					<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded"), post_path(post) %>
-				</td>
-				<td><%= post.body %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<% posts.each do |post| %>
+	<div class="pull-left">
+		<div class="inview">
+			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img-zoom"), post_path(post) %>
+		</div>
+		<div><%= post.body %></div>
+		 <!--星評価-->
+		 <div id="star-rate-<%= post.id %>"></div>
+		  <script>
+		  $('#star-rate-<%= post.id %>').raty({
+		    size: 36,
+		    starOff:  '<%= asset_path('star-off.png') %>',
+		    starOn : '<%= asset_path('star-on.png') %>',
+		    starHalf: '<%= asset_path('star-half.png') %>',
+		    half: true,
+		    readOnly: true,
+		    score: <%= post.rate %>,
+		  });
+		  </script>
+		<!--/星評価-->
+	</div>
+<% end %>
+
+
+

@@ -2,15 +2,19 @@ class Post < ApplicationRecord
 	belongs_to :user, optional: true
 	has_many :post_comments
 	has_many :favorites
+	has_many :bookmarks
 	has_many :tag_maps, dependent: :destroy
-	has_many :tags, through: :tag_maps
+	has_many :tags, through: :tag_maps, dependent: :destroy
 	attachment :post_image, destroy: false
 	validates :body ,presence: true, length: {maximum: 200}
 	validates :post_image ,presence: true
+	validates :rate, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
 	def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
   	end
-
+	def bookmarked_by?(user)
+    	bookmarks.where(user_id: user.id).exists?
+  	end
   	def save_tag(sent_tags)
 	    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
 	    old_tags = current_tags - sent_tags
@@ -24,5 +28,9 @@ class Post < ApplicationRecord
 	      new_tag_map = Tag.find_or_create_by(tag_name: new)
 	      self.tags << new_tag_map
 	    end
+	end
+	def self.search(search)
+	    return Post.all() unless search
+	    Post.where('title LIKE(?)', "%#{search}%")
 	end
 end

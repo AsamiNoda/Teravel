@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resource :favorites, only: [:create, :destroy]
+    resource :bookmarks, only: [:create, :destroy]
     resource :post_comments, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
   resources :tags do
-    get 'posts', to: 'posts#search'
+    get 'posts', to: 'posts#taglist'
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

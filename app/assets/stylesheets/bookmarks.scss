@@ -1,15 +1,15 @@
-// Place all the styles related to the favorites controller here.
+// Place all the styles related to the bookmarks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .option {
 	justify-content: space-between;
-	&__favorite {
+	&__bookmark {
 		&-on {
 		width: 40px;
 		text-decoration: none;
 		padding: 11px 10px;
-		border-radius: 40px;
+		border-radius: 5px;
 		color: #3CCACE;
 		border: 1px solid #ffb340;
 		display: flex;
@@ -22,7 +22,7 @@
 		width: 40px;
 		text-decoration: none;
 		padding: 11px 10px;
-		border-radius: 40px;
+		border-radius: 5px;
 		color: #333;
 		border: 1px solid #f5f5f5;
 		display: flex;

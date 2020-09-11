@@ -1,20 +1,36 @@
 <h1>Posts#show</h1>
-<%= attachment_image_tag @post, :post_image, format: "jpeg", fallback: "no_image.jpeg", size:"500x500", class: "img-rounded" %>
-<%= @post.body %>
-<%= link_to @post.user.name, (@post.user) %>
+<div class="clearfix">
+	<div class="pull-left">
+		<%= attachment_image_tag @post, :post_image, format: "jpeg", fallback: "no_image.jpeg", size:"500x500", class: "img-rounded" %>
+	</div>
+	<div class="containter">
+		<div>
+			<%= link_to user_path(@post.user) do %>
+			    <%= attachment_image_tag @post.user, :profile_image, fallback: "no_image.jpg", size: "40x40" %>
+			    <%= @post.user.name %>
+			<% end %>
+		</div>
+		<div>
+			<%= @post.body %>
+		</div>
+		<% @post_tags.each do |tag| %>
+			<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id), class: "btn btn-default btn-xs" %>
+		<% end %>
 
-<% @post_tags.each do |tag| %>
-	<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-<% end %>
-
- <div class="post_<%= @post.id %>">
- 	<%= render 'posts/post', post: @post %>
- </div>
- <div class="comment_<%= @post.id %>">
- 	<%= render 'post_comments/index', post_comments: @post_comments %>
- </div>
-
-<%= form_with model: [@post, @post_comment], data: {remote: true} do |f| %>
-	<%= f.text_area :comment, size: "90x5" %>
-	<%= f.submit "送信" %>
-<% end %>
+		 <div class="post_<%= @post.id %>">
+		 	<%= render 'posts/post', post: @post %>
+		 </div>
+		 <div class="comment_<%= @post.id %>">
+		 	<%= render 'post_comments/index', post_comments: @post_comments %>
+		 </div>
+		 <div>
+			<%= form_with model: [@post, @post_comment], data: {remote: true} do |f| %>
+				<%= f.text_area :comment, size: "50x3" %>
+				<%= f.submit "送信", class: "btn btn-success" %>
+			<% end %>
+		</div>
+		<div>
+			<%= link_to "一覧ページに戻る", posts_path, class: "btn btn-default btn-xs" %>
+		</div>
+	</div>
+</div>

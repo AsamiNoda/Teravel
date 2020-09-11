@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Registration</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,8 +9,8 @@
   </div>
 
   <div class="field">
-    <%= attachment_image_tag @user, :profile_image, fallback: "no_image.jpg", size:"300x300" %>
-    <%= f.attachment_field :profile_image %>
+    <%= attachment_image_tag @user, :profile_image, id: :img_prev, fallback: "no_image.jpg", size:"300x300" %>
+    <%= f.attachment_field :profile_image, id: :image %>
   </div>
 
   <div class="field">
@@ -42,3 +42,22 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+<!-- アップロードしたばかりの画像のプレビューを表示する-->
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#image").change(function(){
+   readURL(this);
+ });
+});
+</script>

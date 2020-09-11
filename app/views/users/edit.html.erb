@@ -2,8 +2,8 @@
 
 <%= form_for(@user) do |f| %>
     <div class="field">
-    <%= attachment_image_tag @user, :profile_image, :fill, 300, 250, fallback: "no_image.jpeg", size:"300x250" %>
-    <%= f.attachment_field :profile_image %>
+    <%= attachment_image_tag @user, :profile_image, id: :img_prev, fallback: "no_image.jpeg", size:"300x250" %>
+    <%= f.attachment_field :profile_image, id: :image %>
     </div>
 	  <div class="field">
 	    <%= f.label :name %><br>
@@ -28,3 +28,23 @@
         <%= f.submit 'update' %>
     </div>
  <% end %>
+
+ <!-- アップロードしたばかりの画像のプレビューを表示する-->
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#image").change(function(){
+   readURL(this);
+ });
+});
+</script>
+
+

@@ -6,7 +6,6 @@ before_action :authenticate_user!
     @post_comment = @post.post_comments.new(post_comment_params)
     @post_comment.user_id = current_user.id
     if @post_comment.save
-      flash[:success] = "Comment was successfully created."
     else
       @post_comments = PostComment.where(id: @post)
     end

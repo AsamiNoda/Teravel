@@ -1,15 +1,15 @@
-class FavoritesController < ApplicationController
-  before_action :set_post, only: [:create, :destroy]
+class BookmarksController < ApplicationController
+before_action :set_post, only: [:create, :destroy]
   def create
     @post = Post.find(params[:post_id])
-    favorite = @post.favorites.new(user_id: current_user.id)
-    favorite.save
+    bookmark = @post.bookmarks.new(user_id: current_user.id)
+    bookmark.save
   end
 
   def destroy
     @post = Post.find(params[:post_id])
-    favorite = current_user.favorites.find_by(post_id: @post.id)
-    favorite.destroy
+    bookmark = current_user.bookmarks.find_by(post_id: @post.id)
+    bookmark.destroy
   end
 
 

@@ -1,15 +1,7 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>投稿を編集する</h1>
 
- <%= form_with model:@post, url:post_path do |f| %>
-  	<%= attachment_image_tag @post, :post_image, fallback: "no_image.jpg", size:"300x300" %>
-    <%= f.attachment_field :post_image %>
-  <p>説明</p>
-    <%= f.text_area :body %>
- <p>タグ</p>
-  <p>複数の場合は半角の空欄を入れてください</p>
-    <%= f.text_field :tag_name,value: @tag_list %>
+<%= render 'posts/form',post: @post, tag_list:@tag_list %>
+
   <div>
-    <%= f.submit "更新" %>
+      <%= link_to '', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn-default btn glyphicon glyphicon-trash' %>
   </div>
-<% end %>

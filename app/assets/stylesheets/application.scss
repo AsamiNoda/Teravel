@@ -17,6 +17,22 @@
 @import "bootstrap";
 
 
-.post-pic {
-	border-radius: 50px;
+ body {
+   font-family: "futura","筑紫A丸ゴシック","筑紫B丸ゴシック","游ゴシック体","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+   padding-top: 100px;
+   padding-bottom: 100px;
+   }
+
+.img-zoom {
+	opacity: 1;
+
+	.inview & {
+		opacity: 1;
+		transition: transform 0.3s ease;
+		&:hover{
+		transform: scale(1.2);
+		}
+	}
 }
+
+

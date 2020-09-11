@@ -1,7 +1,13 @@
-<% @tag_list.each do |list| %>
-	<%= link_to list.tag_name, tag_posts_path(tag_id: list.id) %>
-<% end %>
+<!-- 
 
-<p>タグが<%= @tag.tag_name %>の投稿一覧</p>
-
-<%= render 'posts/index',posts: @posts %>
+<div class="search_form">
+  <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form") do |form| %>
+    <%= form.text_field :keyword, placeholder: "検索", class: "search-input" %>
+  <% end %>
+</div>
+<div class="contents row">
+  <% @posts.each do |post| %>
+    <%= render partial: "post", locals: { post: post } %>
+  <% end %>
+</div>
+ -->
