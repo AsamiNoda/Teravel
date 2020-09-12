@@ -30,41 +30,45 @@
 <!-- タブ・メニュー -->
 <ul class="nav nav-tabs">
   <li class="active"><a href="#sampleContentA" data-toggle="tab">Post <i class="fas fa-user"></i></a></li>
-  <li><a href="#sampleContentB" data-toggle="tab">Favorite <i class="fas fa-globe"></i></i></a></li>
-  <li><a href="#sampleContentC" data-toggle="tab">Bookmark <i class="fas fa-book-open"></i></a></li>
-  <li><a href="#sampleContentD" data-toggle="tab">タブＤ</a></li>
+  <% if @user == current_user %>
+    <li><a href="#sampleContentB" data-toggle="tab">Favorite <i class="fas fa-globe"></i></i></a></li>
+    <li><a href="#sampleContentC" data-toggle="tab">Bookmark <i class="fas fa-book-open"></i></a></li>
+  <% end %>
 </ul>
 
 <!-- タブ内容 -->
 <div class="tab-content">
-  <div class="tab-pane" id="sampleContentA">
+  <div class="tab-pane active" id="sampleContentA">
     <% if @posts.exists? %>
       <%= render 'posts/index',posts: @posts %>
     <% else %>
-      <p>現在登録の写真はありません！</br>
-          今すぐ<%= link_to "新規投稿", new_post_path %>しよう！
+      <p>現在登録の写真はありません。</br>
+          <% if @user == current_user %>
+            今すぐ<%= link_to "新規投稿", new_post_path %>しよう！
+          <% end %>
       </p>
     <% end %>
   </div>
-  <div class="tab-pane active" id="sampleContentB">
-    <% if current_user.favorite_posts.exists? %>
-      <%= render 'posts/index',posts: current_user.favorite_posts %>
-    <% else %>
-      <p>お気に入り<i class="fas fa-globe"></i></i>の写真を見つけよう！</br>
-          <%= link_to "投稿一覧ページ", posts_path %>を確認する
-      </p>
-    <% end %>
-  </div>
-  <div class="tab-pane" id="sampleContentC">
-    <% if current_user.bookmark_posts.exists? %>
-      <%= render 'posts/index',posts: current_user.bookmark_posts %>
-    <% else %>
-            <p>後で確認したい写真を保存<i class="fas fa-book-open"></i>しよう！</br>
-          <%= link_to "投稿一覧ページ", posts_path %>を確認する
-      </p>
-    <% end %>
-  </div>
-  <div class="tab-pane" id="sampleContentD">
-    <p>タブＤの内容</p>
-  </div>
+
+  <% if @user == current_user %>
+    <div class="tab-pane" id="sampleContentB">
+      <% if current_user.favorite_posts.exists? %>
+        <%= render 'posts/index',posts: current_user.favorite_posts %>
+      <% else %>
+        <p>お気に入り<i class="fas fa-globe"></i></i>の写真を見つけよう！</br>
+            <%= link_to "投稿一覧ページ", posts_path %>を確認する
+        </p>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="sampleContentC">
+      <% if current_user.bookmark_posts.exists? %>
+        <%= render 'posts/index',posts: current_user.bookmark_posts %>
+      <% else %>
+              <p>後で確認したい写真を保存<i class="fas fa-book-open"></i>しよう！</br>
+            <%= link_to "投稿一覧ページ", posts_path %>を確認する
+        </p>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>

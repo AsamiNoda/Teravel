@@ -4,13 +4,28 @@
     <%= f.attachment_field :post_image, id: :image %>
   <p>説明</p>
     <%= f.text_area :body %>
- <p>タグ</p>
-  <p>複数の場合は半角の空欄を入れてください</p>
+ <p>タグ 複数の場合は半角の空欄を入れてください</p>
+
     <%= f.text_field :tag_name,value: tag_list %>
+
+<p>撮影場所（国）</p>
+<%= f.country_select :country, priority_countries: ["JP"] %>
+
+
+<p>撮影日（年/月）</p>
+  <%= f.date_select(
+        :shooting_date,
+        use_month_numbers: true,
+        start_year: 2000,
+        discard_day:true,
+        end_year: (Time.now.year - 0),
+        default: Date.new(2020, 1, 1),
+        date_separator: '/') %>
+
   <div>
    <!-- 評価 -->
   <div class="form-group" id="star">
-    <%= f.label :rate,'評価 ', class:'col-form-label' %>
+<p>オススメ度　<strong style="color:red">必須</strong></p>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
   <div class="pull-left">

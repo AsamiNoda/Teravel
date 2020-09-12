@@ -1,7 +1,7 @@
 <% posts.each do |post| %>
 	<div class="pull-left">
 		<div class="inview">
-			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img-zoom"), post_path(post) %>
+			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img-zoom img"), post_path(post) %>
 		</div>
 		<div><%= post.body %></div>
 		 <!--星評価-->

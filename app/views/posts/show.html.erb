@@ -13,6 +13,18 @@
 		<div>
 			<%= @post.body %>
 		</div>
+		<div>
+			<% if @post.shooting_date.present? %>
+				<p>撮影日（年/月）</p>
+				<%= @post.shooting_date.strftime('%Y/%m') %>
+			<% end %>
+		</div>
+		<div>
+			<% if @post.country.present? %>
+				<p>撮影場所（国）</p>
+				<%= @post.country %>
+			<% end %>
+		</div>
 		<% @post_tags.each do |tag| %>
 			<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id), class: "btn btn-default btn-xs" %>
 		<% end %>

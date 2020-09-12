@@ -61,10 +61,17 @@ class PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
+  def search
+  @posts = Post.where('body LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   private
     def post_params
-      params.require(:post).permit(:post_image, :body, :rate)
+      params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country)
     end
 end
 

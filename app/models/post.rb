@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	has_many :tag_maps, dependent: :destroy
 	has_many :tags, through: :tag_maps, dependent: :destroy
 	attachment :post_image, destroy: false
-	validates :body ,presence: true, length: {maximum: 200}
+	validates :body , length: {maximum: 200}
 	validates :post_image ,presence: true
 	validates :rate, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
 	def favorited_by?(user)
@@ -30,7 +30,7 @@ class Post < ApplicationRecord
 	    end
 	end
 	def self.search(search)
-	    return Post.all() unless search
-	    Post.where('title LIKE(?)', "%#{search}%")
+	    return Post.all unless search
+	    Post.where('body LIKE(?)', "%#{search}%")
 	end
 end

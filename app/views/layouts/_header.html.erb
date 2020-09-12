@@ -14,11 +14,11 @@
 
 		<div class="collapse navbar-collapse" id="navbarEexample8">
 			<ul class="nav navbar-nav">
-				<li><%= link_to 'Home', root_path %></li>
-				<li><%= link_to 'About', home_about_path %></li>
-				<li><%= link_to 'Travel', posts_path %></li>
+				<li><%= link_to '', root_path, class: "fas fa-home" %></li>
+				<li><%= link_to '', home_about_path, class: "fas fa-info-circle" %></li>
+				<li><%= link_to '', posts_path, class: "fas fa-camera" %></li>
 				<% if user_signed_in? %>
-					<li><%= link_to 'New Post', new_post_path %></li>
+					<li><%= link_to '', new_post_path, class: "far fa-plus-square" %></li>
 					<li><%= link_to 'Check out', destroy_user_session_path, method: :delete %></li>
 					<li>
 						<%= link_to user_path(current_user) do %>
