@@ -69,4 +69,9 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'country_select'
-gem 'rails-i18n', '~> 5.1' 
+gem 'rails-i18n', '~> 5.1'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
