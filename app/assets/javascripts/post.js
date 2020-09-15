@@ -5,15 +5,22 @@ $(document).on('turbolinks:load', function(){
 
   function builtHTML(data){
     let html = `
-    <li>${data.body}</li>
+
+    <div class="pull-left">
+
+		<div>${data.body}</div>
+		<div>${data.post_image}</div>
+		<div>${data.country}</div>
+		<a href="/posts/${data.id}">${data.body}</a>
+
+
     `
     searchResult.append(html);
   }
 
-
   function NoResult(message){
     let html = `
-    <li>${message}</li>
+    <div>${message}</div>
     `
     searchResult.append(html);
   }
@@ -28,7 +35,7 @@ $(document).on('turbolinks:load', function(){
   function search(target){
     $.ajax({
       type: 'GET',
-      url: '/posts/search',
+      url: '/',
       data: {keyword: target},
       dataType: 'json'
     })
@@ -39,7 +46,7 @@ $(document).on('turbolinks:load', function(){
           builtHTML(data)
         });
       } else {
-        NoResult('該当する商品はありません')
+        NoResult('検索結果が見つかりませんでした')
       }
     })
     .fail(function(data){

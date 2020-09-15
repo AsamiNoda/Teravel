@@ -1,2 +1,13 @@
-<h1>トップページです</h1>
+
+
+
+<div class="search-container">
+	<%= form_tag('/', method: :get, placeholder:'',remote: true) do %>
+		<%= text_field_tag :body, :'', id:'searching-form', placeholder:'検索', autocomplete:'off' %><i class="fas fa-search"></i>
+	<% end %>
+
+	<div class="result">
+		<ul></ul>
+	</div>
+</div>
 

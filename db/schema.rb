@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_034943) do
+ActiveRecord::Schema.define(version: 2020_09_12_093858) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_034943) do
     t.string "post_image_id"
     t.float "rate"
     t.date "shooting_date"
-    t.string "country"
+    t.string "country_name"
   end
 
   create_table "relationships", force: :cascade do |t|

@@ -1,4 +1,4 @@
-<h1>Posts#show</h1>
+<h1>ぱんくずリスト入れられたらいれる</h1>
 <div class="clearfix">
 	<div class="pull-left">
 		<%= attachment_image_tag @post, :post_image, format: "jpeg", fallback: "no_image.jpeg", size:"500x500", class: "img-rounded" %>
@@ -20,9 +20,9 @@
 			<% end %>
 		</div>
 		<div>
-			<% if @post.country.present? %>
+			<% if @post.country_name.present? %>
 				<p>撮影場所（国）</p>
-				<%= @post.country %>
+				<%= @post.country_name %>
 			<% end %>
 		</div>
 		<% @post_tags.each do |tag| %>

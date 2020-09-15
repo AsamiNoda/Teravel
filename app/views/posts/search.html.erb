@@ -1,11 +1,13 @@
-
-<div class="search-container">
-	<%= form_tag('/search', method: :get, placeholder:'',remote: true) do %>
-		<%= text_field_tag :body, :'', id:'searching-form', placeholder:'検索', autocomplete:'off' %>
-	<% end %>
-
-	<div class="result">
-		<ul></ul>
+<div class="l-side">
+	<div class="search-sort">
+		<div class="select-wrap">
+        	<select name= "sort_order", class= "sort_order">
+	          <option value="">並び替え</option>
+	          <option value="favorite_asc">価格の安い順</option>
+	          <option value="favorite_desc">価格の高い順</option>
+	          <option value="created_at_asc">出品の古い順</option>
+	          <option value="created_at_desc">出品の新しい順</option>
+        	</select>
+		</div>
 	</div>
 </div>
-

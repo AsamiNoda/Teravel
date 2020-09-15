@@ -33,4 +33,7 @@ class Post < ApplicationRecord
 	    return Post.all unless search
 	    Post.where('body LIKE(?)', "%#{search}%")
 	end
+	  def self.create_all_ranks #Noteクラスからデータを取ってくる処理なのでクラスメソッド！
+	    Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+	  end
 end

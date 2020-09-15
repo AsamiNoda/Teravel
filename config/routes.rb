@@ -11,10 +11,8 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resource :bookmarks, only: [:create, :destroy]
     resource :post_comments, only: [:create, :destroy]
-    collection do
-      get 'search'
-    end
   end
+  get 'posts/search' => 'posts#search'
   resources :tags do
     get 'posts', to: 'posts#taglist'
   end
