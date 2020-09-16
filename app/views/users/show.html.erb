@@ -33,6 +33,7 @@
   <% if @user == current_user %>
     <li><a href="#sampleContentB" data-toggle="tab">Favorite <i class="fas fa-globe"></i></i></a></li>
     <li><a href="#sampleContentC" data-toggle="tab">Bookmark <i class="fas fa-book-open"></i></a></li>
+    <li><a href="#sampleContentD" data-toggle="tab">Follower's posts <i class="fas fa-user-friends"></i></a></li>
   <% end %>
 </ul>
 
@@ -65,6 +66,15 @@
         <%= render 'posts/index',posts: current_user.bookmark_posts %>
       <% else %>
               <p>後で確認したい写真を保存<i class="fas fa-book-open"></i>しよう！</br>
+            <%= link_to "投稿一覧ページ", posts_path %>を確認する
+        </p>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="sampleContentD">
+      <% if current_user.follower.exists? %>
+        <%= render 'posts/index',posts: @follower_posts %>
+      <% else %>
+        <p>フォロー<i class="fas fa-user-friends"></i>したいユーザーを見つけよう！</br>
             <%= link_to "投稿一覧ページ", posts_path %>を確認する
         </p>
       <% end %>

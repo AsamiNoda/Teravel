@@ -1,42 +1,4 @@
-<h1>写真</h1>
+<h1>新着順</h1>
 <div class="clearfix">
-		<div class="search-sort">
-		<div class="select-wrap">
-        	<select name= "change", class= "change">
-	          <option value="">並び替え</option>
-	          <option value="created_at_asc">新着順</option>
-	          <option value="created_at_desc">古い順</option>
-	          <option value="favorite">いいね順</option>
-	          <option value="review">評価順</option>
-        	</select>
-		</div>
-	</div>
 <%= render 'posts/index',posts: @posts %>
 </div>
-
-<!-- <div>
-	<h3>いいね順</h3>
-<% @all_ranks.each do |post| %>
-	<div class="pull-left">
-		<div class="inview">
-			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img-zoom img"), post_path(post) %>
-		</div>
-		<div><%= post.body %></div>
-
-		 <div id="star-rate-<%= post.id %>"></div>
-		  <script>
-		  $('#star-rate-<%= post.id %>').raty({
-		    size: 36,
-		    starOff:  '<%= asset_path('star-off.png') %>',
-		    starOn : '<%= asset_path('star-on.png') %>',
-		    starHalf: '<%= asset_path('star-half.png') %>',
-		    half: true,
-		    readOnly: true,
-		    score: <%= post.rate %>,
-		  });
-		  </script>
-
-	</div>
-<% end %>
-</div> -->
-

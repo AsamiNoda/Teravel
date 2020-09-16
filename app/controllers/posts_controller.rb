@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc) 
     @tag_list = Tag.all
-    @all_ranks = Post.create_all_ranks
     @posts = @posts.order(params[:change])
 
   end

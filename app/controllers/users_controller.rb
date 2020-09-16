@@ -15,6 +15,13 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@posts = @user.posts
+
+    @posts_all = Post.all
+
+   #フォローしているユーザーを取得
+    @follow_users = @user.following_user
+   #フォローユーザーのツイートを表示
+    @follower_posts = @posts_all.where(user_id: @follow_users).order("created_at DESC")
   end
   def follows
   end

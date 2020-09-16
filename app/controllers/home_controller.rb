@@ -5,6 +5,8 @@ class HomeController < ApplicationController
       format.html
       format.json
     end
+
+    @all_ranks = Post.create_all_ranks
   end
 
   def about

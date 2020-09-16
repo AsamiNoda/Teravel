@@ -5,11 +5,7 @@ $(function() {
     // 選択したoptionタグのvalue属性を取得する
     var this_value = $(this).val();
     // value属性の値により、ページ遷移先の分岐
-    if (this_value == "favorite_asc") {
-      html = "&sort=favorite_asc"
-    } else if (this_value == "favorite_desc") {
-      html = "&sort=favorite_desc"
-    } else if (this_value == "created_at_asc") {
+ if (this_value == "created_at_asc") {
       html = "&sort=created_at+asc"
     } else if (this_value == "created_at_desc") {
       html = "&sort=created_at+desc"
@@ -36,14 +32,10 @@ $(function() {
 
       var selected_option = location['href'].match(/&sort=*.+/)[0].replace('&sort=', '');
 
-      if(selected_option == "favorite_asc") {
+      if (selected_option == "created_at+asc") {
         var sort = 1
-      } else if (selected_option == "favorite_desc") {
-        var sort = 2
-      } else if (selected_option == "created_at+asc") {
-        var sort = 3
       } else if (selected_option == "created_at+desc") {
-        var sort = 4
+        var sort = 2
       }
 
       var add_selected = $('select[name=sort_order]').children()[sort]

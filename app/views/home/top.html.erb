@@ -1,7 +1,12 @@
+<ul class="slider">
+	<% @all_ranks.each do |post| %>
+		<li class="inview">
+			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", class: "img-zoom bx-wrapper"), post_path(post) %></li>
+	<% end %>
+</ul>
 
 
-
-<div class="search-container">
+<div class="search-container text-center">
 	<%= form_tag('/', method: :get, placeholder:'',remote: true) do %>
 		<%= text_field_tag :body, :'', id:'searching-form', placeholder:'検索', autocomplete:'off' %><i class="fas fa-search"></i>
 	<% end %>
