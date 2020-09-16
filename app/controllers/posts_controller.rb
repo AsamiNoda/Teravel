@@ -1,8 +1,21 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order(created_at: :desc) 
+    @posts = Post.order(created_at: :desc)
     @tag_list = Tag.all
-    @posts = @posts.order(params[:change])
+
+
+        #ソート検索用
+    if params[:option] == "created_at_desc"
+      @posts = Post.order('posts.created_at DESC')
+    elsif params[:option] == "created_at_asc"
+      @posts = Post.order('posts.created_at ASC')
+    elsif params[:option] == "rate"
+      @posts = Post.order('posts.rate DESC')
+    elsif params[:option] == "favorite"
+      @posts = Post.find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    elsif params[:option] == "Bookmark"
+      @posts = Post.find(Bookmark.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    end
 
   end
 

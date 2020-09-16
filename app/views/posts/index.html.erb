@@ -1,4 +1,19 @@
-<h1>新着順</h1>
+<h1></h1>
 <div class="clearfix">
+
+      <%#= プルダウンを選択後にページに遷移  %>
+      <span class="sort-box">
+        <select name="search" onChange="myfunc(this.value)" id="sort-select">
+          <option value="">並び替え</option>
+          <option value="created_at_desc">新着順</option>
+          <option value="created_at_asc">古い順</option>
+          <option value="rate">高評価</option>
+          <option value="favorite">いいね</option>
+          <option value="Bookmark">ブックマーク</option>
+        </select>
+      </span>
+    </div>
+
+
 <%= render 'posts/index',posts: @posts %>
 </div>
