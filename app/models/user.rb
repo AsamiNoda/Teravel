@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image, destroy: false
   has_many :posts, dependent: :destroy
-  has_many :post_comments
-  has_many :favorites
+  has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
 
   validates :introduction, length: {maximum: 100}

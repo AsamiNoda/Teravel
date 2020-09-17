@@ -9,5 +9,6 @@ $(document).ready(function(){
     maxSlides: 8, //マックスで表示する数
     moveSlides: 1, //スライドをどのくらいの数を動かすか
     slideWidth: 400, //ひとつの要素の幅を指定
+    pager: false,
   });
 });

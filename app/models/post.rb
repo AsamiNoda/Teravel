@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
 	belongs_to :user, optional: true
-	has_many :post_comments
-	has_many :favorites
-	has_many :bookmarks
+	has_many :post_comments, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :bookmarks, dependent: :destroy
 	has_many :tag_maps, dependent: :destroy
 	has_many :tags, through: :tag_maps, dependent: :destroy
 	attachment :post_image, destroy: false
@@ -33,7 +33,5 @@ class Post < ApplicationRecord
 	    return Post.all unless search
 	    Post.where('body LIKE(?)', "%#{search}%")
 	end
-	  def self.create_all_ranks #Noteクラスからデータを取ってくる処理なのでクラスメソッド！
-	    Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
-	  end
+
 end

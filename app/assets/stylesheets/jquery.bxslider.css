@@ -3,3 +3,7 @@
     height: 400px;
     object-fit: cover;
 }
+
+.bx-wrapper {
+  margin: 0 !important;
+}
