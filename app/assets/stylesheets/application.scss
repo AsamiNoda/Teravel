@@ -15,11 +15,15 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
  * {
   margin: 0;
   padding: 0;
 }
+
+
 
  body {
    font-family: "futura","筑紫A丸ゴシック","筑紫B丸ゴシック","游ゴシック体","ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;

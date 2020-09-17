@@ -9,12 +9,10 @@ $(document).on('turbolinks:load', function(){
     <div class="pull-left">
 
 		<div>${data.body}</div>
-		<div>${data.post_image_id}</div>
 		<div>${data.country_name}</div>
-		<div>${data.tag_name}</div>
-		<a href="/posts/${data.id}">${data.body}</a>
-
-
+		<div>${data.name}</div>
+		<a href="/tags/${data.id}/posts">${data.tag_name}</a>
+    <a href="/posts/${data.id}">${data.body}</a>
     `
     searchResult.append(html);
   }

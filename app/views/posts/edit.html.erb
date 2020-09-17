@@ -1,7 +1,9 @@
-<h1>投稿を編集する</h1>
+<div class="container">
+	<h1>投稿を編集する</h1>
 
-<%= render 'posts/form',post: @post, tag_list:@tag_list %>
+	<%= render 'posts/form',post: @post, tag_list:@tag_list %>
 
-  <div>
-      <%= link_to '', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn-default btn glyphicon glyphicon-trash' %>
-  </div>
+	  <div>
+	      <%= link_to '', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn-default btn glyphicon glyphicon-trash' %>
+	  </div>
+ </div>

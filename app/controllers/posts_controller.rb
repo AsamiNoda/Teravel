@@ -25,6 +25,10 @@ class PostsController < ApplicationController
       @post_comment = PostComment.new
       @post_comments = @post.post_comments.order(created_at: :desc)
       @post_tags = @post.tags
+      @lat = @post.spot.latitude
+      @lng = @post.spot.longitude
+      gon.lat = @lat
+      gon.lng = @lng
     else
       flash[:success] = "ここから先はログインが必要です！"
       redirect_to new_user_session_path
@@ -34,6 +38,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @tag_list = @post.tags.pluck(:tag_name).split(nil)
+    @post.build_spot
   end
 
   def create
@@ -79,7 +84,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name)
+      params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, spot_attributes: [:address])
     end
 end
 

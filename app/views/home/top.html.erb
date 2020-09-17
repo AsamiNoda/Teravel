@@ -6,10 +6,12 @@
 </ul>
 <%= link_to "投稿をもっと見る", posts_path, class: "btn btn-primary center-block" %>
 
-<div class="search-container text-center">
+<div class="search-container">
+<div class="search-area text-center">
 	<%= form_tag('/', method: :get, placeholder:'',remote: true) do %>
-		<%= text_field_tag :body, :'', id:'searching-form', class: "form-control", placeholder:'検索', autocomplete:'off' %><i class="fas fa-search"></i>
+		<%= text_field_tag :body, :'', id:'searching-form', class: "form-control search-top fa", placeholder: "\uf002", autocomplete:'off' %>
 	<% end %>
+</div>
 
 	<div class="result">
 		<ul></ul>

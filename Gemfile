@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+#gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -68,10 +68,14 @@ gem "refile-mini_magick"
 
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-gem 'country_select'
+gem 'country_select', require: 'country_select_without_sort_alphabetical'
 gem 'rails-i18n', '~> 5.1'
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+gem 'font-awesome-sass'
+gem 'geocoder'
+gem "gmaps4rails"
+gem "gon"

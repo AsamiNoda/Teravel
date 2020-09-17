@@ -9,6 +9,8 @@ class Post < ApplicationRecord
 	validates :body , length: {maximum: 200}
 	validates :post_image ,presence: true
 	validates :rate, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
+  	has_one :spot, dependent: :destroy
+  	accepts_nested_attributes_for :spot
 	def favorited_by?(user)
     	favorites.where(user_id: user.id).exists?
   	end
@@ -33,5 +35,6 @@ class Post < ApplicationRecord
 	    return Post.all unless search
 	    Post.where('body LIKE(?)', "%#{search}%")
 	end
+
 
 end
