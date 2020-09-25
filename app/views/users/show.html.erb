@@ -1,44 +1,48 @@
-<h1>T+eravel passport</h1>
-<p>登録情報</p>
-<div class="clearfix">
-  <div class="pull-left">
-    <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size:"200x200" %>
-  </div>
-  <div class="pull-left">
-  <%= @user.introduction %>
-  <%= @user.name %>
-  <%= @user.birthyear %> 年生まれ
-  <% if @user == current_user %>
-    <%= link_to "", edit_user_path(@user), class: "fas fa-user-edit" %>
+<div class="container">
+  <h1>T+eravel passport</h1>
+  <div class="clearfix margin-top">
+    <div class="pull-left col-xs-3">
+      <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size:"200x200" %>
+    </div>
+    <div class="pull-left col-xs-9">
+    <h3><%= @user.name %></h3>
+    <div>
+    <%= @user.introduction %>
+    </div>
+    <div class="margin-top">
+    <%= @user.birthyear %> 年生まれ
+    <% if @user == current_user %>
+      <%= link_to "", edit_user_path(@user), class: "fas fa-user-edit" %>
+    </div>
 
-  <% end %>
-  <p>投稿数：<%= @user.posts.count %></p>
-  <p>フォロー：<%= link_to @user.follower.count, user_follows_path(@user) %>　フォロワー：<%= link_to @user.followed.count, user_followers_path(@user) %></p>
-
-  <!-- フォローボタン -->
-  <% if current_user != @user %>
-    <% if current_user.following?(@user) %>
-      <%= link_to 'フォロー外す', user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
-    <% else %>
-      <%= link_to 'フォローする', user_relationships_path(@user), method: :POST, class: "btn btn-success" %>
     <% end %>
-  <% end %>
+    <p>投稿数：<%= @user.posts.count %></p>
+    <p>フォロー：<%= link_to @user.follower.count, user_follows_path(@user) %>　フォロワー：<%= link_to @user.followed.count, user_followers_path(@user) %></p>
 
+    <!-- フォローボタン -->
+    <% if current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'フォロー外す', user_relationships_path(@user), method: :delete, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'フォローする', user_relationships_path(@user), method: :POST, class: "btn btn-success" %>
+      <% end %>
+    <% end %>
+
+    </div>
   </div>
-</div>
-<div class="clearfix">
-<!-- タブ・メニュー -->
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#sampleContentA" data-toggle="tab">Post <i class="fas fa-user"></i></a></li>
-  <% if @user == current_user %>
-    <li><a href="#sampleContentB" data-toggle="tab">Favorite <i class="fas fa-globe"></i></i></a></li>
-    <li><a href="#sampleContentC" data-toggle="tab">Bookmark <i class="fas fa-book-open"></i></a></li>
-    <li><a href="#sampleContentD" data-toggle="tab">Follower's posts <i class="fas fa-user-friends"></i></a></li>
-  <% end %>
-</ul>
+  <div class="clearfix row margin-top">
+  <!-- タブ・メニュー -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#sampleContentA" data-toggle="tab">Post <i class="fas fa-user"></i></a></li>
+    <% if @user == current_user %>
+      <li><a href="#sampleContentB" data-toggle="tab">Favorite <i class="fas fa-heart"></i></i></a></li>
+      <li><a href="#sampleContentC" data-toggle="tab">Bookmark <i class="fas fa-bookmark"></i></a></li>
+      <li><a href="#sampleContentD" data-toggle="tab">Follower's posts <i class="fas fa-user-friends"></i></a></li>
+    <% end %>
+  </ul>
 
 <!-- タブ内容 -->
-<div class="tab-content">
+<div class="tab-content margin-top">
   <div class="tab-pane active" id="sampleContentA">
     <% if @posts.exists? %>
       <%= render 'posts/index',posts: @posts %>
@@ -56,7 +60,7 @@
       <% if current_user.favorite_posts.exists? %>
         <%= render 'posts/index',posts: current_user.favorite_posts %>
       <% else %>
-        <p>お気に入り<i class="fas fa-globe"></i></i>の写真を見つけよう！</br>
+        <p>お気に入り<i class="fas fa-heart"></i>の写真を見つけよう！</br>
             <%= link_to "投稿一覧ページ", posts_path %>を確認する
         </p>
       <% end %>
@@ -65,7 +69,7 @@
       <% if current_user.bookmark_posts.exists? %>
         <%= render 'posts/index',posts: current_user.bookmark_posts %>
       <% else %>
-              <p>後で確認したい写真を保存<i class="fas fa-book-open"></i>しよう！</br>
+              <p>後で確認したい写真を保存<i class="fas fa-bookmark"></i>しよう！</br>
             <%= link_to "投稿一覧ページ", posts_path %>を確認する
         </p>
       <% end %>

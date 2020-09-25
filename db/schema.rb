@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_101530) do
+ActiveRecord::Schema.define(version: 2020_09_25_122857) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id"
@@ -20,12 +20,10 @@ ActiveRecord::Schema.define(version: 2020_09_17_101530) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.string "user_id"
+    t.string "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "post_id"
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -45,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_101530) do
     t.float "rate"
     t.date "shooting_date"
     t.string "country_name"
+    t.integer "area"
   end
 
   create_table "relationships", force: :cascade do |t|

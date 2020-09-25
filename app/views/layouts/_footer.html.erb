@@ -1,19 +1,22 @@
-<div class="container">
 <footer>
-	<div class="clearfix">
-		
-		<div class="pull-left col-xs-2">
-			<%= link_to 'ホーム', root_path %>
-		</div>
-		<div class="pull-left col-xs-2">
-			<%= link_to 'T+eravelって何？', home_about_path %>
-		</div>
-		<div class="pull-left col-xs-2">
-			<%= link_to '投稿一覧', posts_path %>
-		</div>
+	<div class="container">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="col-xs-3">
+					<%= link_to 'ホーム', root_path, class: "footer-text" %>
+				</div>
+				<div class="col-xs-3">
+					<%= link_to 'T+eravelって何？', home_about_path, class: "footer-text" %>
+				</div>
+				<div class="col-xs-3">
+					<%= link_to '投稿一覧', posts_path, class: "footer-text" %>
+				</div>
+				<div class="col-xs-3">
+					<%= link_to '新規投稿する', new_post_path, class: "footer-text" %>
+				</div>
+			</div>
 
 	</div>
-	<div class="center-block">
+	<div class="text-center margin-top copyright">
 	<p>Copyright (c) T+eravel All Rights Reserved.</p>
 	</div>
 </footer>

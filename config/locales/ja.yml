@@ -1,0 +1,26 @@
+ja:
+  enums:
+    post:
+      area:
+        North_America: "北アメリカ"
+        South_America: "南アメリカ"
+        Asia_and_Middle_East: "アジア＆中東"
+        Oceania: "オセアニア"
+        Europe: "ヨーロッパ"
+        Africa: "アフリカ"
+  activerecord:
+    attributes:
+      spot:
+        address: "場所"
+        latitude: "緯度"
+        longitude: "経度"
+      post:
+        post_image_id: "写真"
+        rate: "評価"
+        area: "地域"
+        shooting_date: "撮影時期"
+      user:
+        name: "名前"
+        profile_image_id: "プロフィール写真"
+        birthyear: "誕生年"
+        introduction: "自己紹介"

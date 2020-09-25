@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root "home#top"
   get "home/about" => "home#about"
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followed', as: 'followers'
   end
   resources :posts do
+    collection {get "search"}
     resource :favorites, only: [:create, :destroy]
     resource :bookmarks, only: [:create, :destroy]
     resource :post_comments, only: [:create, :destroy]

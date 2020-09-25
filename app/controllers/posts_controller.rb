@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :search]
   def index
     @posts = Post.order(created_at: :desc)
     @tag_list = Tag.all
-
 
         #ソート検索用
     if params[:option] == "created_at_desc"
@@ -11,10 +11,10 @@ class PostsController < ApplicationController
       @posts = Post.order('posts.created_at ASC')
     elsif params[:option] == "rate"
       @posts = Post.order('posts.rate DESC')
+    elsif params[:option] == "shooting_date"
+      @posts = Post.order('posts.shooting_date DESC')
     elsif params[:option] == "favorite"
       @posts = Post.find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
-    elsif params[:option] == "Bookmark"
-      @posts = Post.find(Bookmark.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
     end
 
   end
@@ -63,8 +63,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tag_list = params[:post][:tag_name].split(nil)
       if @post.update(post_params)
-        flash[:success] = "写真が更新されました！"
         @post.save_tag(tag_list)
+        flash[:success] = "写真が更新されました！"
         redirect_to @post
       else
         render 'edit'
@@ -77,14 +77,17 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
   def taglist
-    @tag_list = Tag.all  #こっちの投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
+    @tag_list = Tag.all               #投稿一覧表示ページでも全てのタグを表示するために、タグを全取得
     @tag = Tag.find(params[:tag_id])  #クリックしたタグを取得
     @posts = @tag.posts.all           #クリックしたタグに紐付けられた投稿を全て表示
   end
+  def search
+    @posts = Post.where(area: params[:area])
+    @post = Post.where(area: params[:area]).first
+   end
 
   private
     def post_params
-      params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, spot_attributes: [:address])
+      params.require(:post).permit(:post_image, :body, :rate, :shooting_date, :country_name, :area, spot_attributes: [:address])
     end
 end
-

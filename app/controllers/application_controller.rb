@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   #ログイン時のパス
   def after_sign_in_path_for(resource)
     if user_signed_in?
-      posts_path
+      user_path(current_user.id)
     else
       root_path
     end

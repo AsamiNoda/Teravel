@@ -6,8 +6,9 @@ class Post < ApplicationRecord
 	has_many :tag_maps, dependent: :destroy
 	has_many :tags, through: :tag_maps, dependent: :destroy
 	attachment :post_image, destroy: false
-	validates :body , length: {maximum: 200}
+	validates :body , length: {maximum: 100}
 	validates :post_image ,presence: true
+	validates :shooting_date,presence: true
 	validates :rate, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
   	has_one :spot, dependent: :destroy
   	accepts_nested_attributes_for :spot
@@ -36,5 +37,6 @@ class Post < ApplicationRecord
 	    Post.where('body LIKE(?)', "%#{search}%")
 	end
 
+  enum area:{ North_America: 0, South_America: 1, Asia_and_Middle_East: 2, Oceania: 3, Europe: 4, Africa: 5 }
 
 end

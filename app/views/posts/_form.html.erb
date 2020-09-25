@@ -1,31 +1,32 @@
 
- <%= form_with model: post do |f| %>
-    <%= attachment_image_tag post, :post_image, id: :img_prev, fallback: "no_image.jpg", size:"300x300" %>
+ <%= form_with model: post, local: true do |f| %>
+ <%= render 'layouts/error',model: f.object %>
+    <%= attachment_image_tag post, :post_image, id: :img_prev, fallback: "no_image.jpg", class: "update-img" %>
     <%= f.attachment_field :post_image, id: :image %>
-  <p>説明</p>
-    <%= f.text_area :body %>
- <p>タグ 複数の場合は半角の空欄を入れてください</p>
+  <p class="margin-top">説明</p>
+    <%= f.text_area :body, class: "form-control"  %>
+ <p class="margin-top">タグ (複数の場合は半角の空欄を入れてください)</p>
 
-    <%= f.text_field :tag_name,value: tag_list %>
+    <%= f.text_field :tag_name,value: tag_list, class: "form-control"  %>
 
-<p>撮影場所（国）</p>
-<%= f.country_select :country_name, priority_countries: ["JP"] %>
+<p class="margin-top">エリア</p>
+
+<%= f.select :area, Post.areas_i18n.keys.map { |k| [Post.areas_i18n[k], k]},{},{class: "form-control"} %>
 
 
-<div class="spot">
+<div class="spot margin-top">
   <%= f.fields_for :spot do |s| %>
     <%= s.label :address, "場所(Google Mapで検索)", class: 'spot__title' %>
-    <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
+    <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text form-control' %>
+
   <% end %>
-  <input onclick= "codeAddress()" type= "button" value= "検索する"></input>
-  <div class="map" id= "map" style="height: 320px; width: 640px;"></div>
+  <input onclick= "codeAddress()" type= "button" value= "検索する" class="btn-xs btn btn-success"></input>
+  <div class= "map" id= "map", style= "height: 320px; width: 450px;" ></div>
 </div>
 
 
 
-
-
-<p>撮影日（年/月）</p>
+<p class="margin-top">撮影時期（年/月）</p>
   <%= f.date_select(
         :shooting_date,
         use_month_numbers: true,
@@ -37,12 +38,12 @@
 
   <div>
    <!-- 評価 -->
-  <div class="form-group" id="star">
-<p>オススメ度　<strong style="color:red">必須</strong></p>
+  <div class="form-group margin-top" id="star">
+    <p>オススメ度　<strong style="color:red">必須</strong></p>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
   <div class="pull-left">
-    <%= f.submit "保存", class: "btn btn-primary"%>
+    <%= f.submit "保存する", class: "btn btn-primary btn"%>
   </div>
 
 <% end %>

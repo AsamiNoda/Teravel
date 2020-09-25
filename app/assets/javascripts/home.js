@@ -1,55 +1,68 @@
-$(document).on('turbolinks:load', function(){
-  const inputForm = $('#searching-form');
-  const post = location.href;
-  const searchResult = $('.result ul');
+$(function() {
 
-  function builtHTML(data){
+//一致する結果がいた場合の処理
+var search_list = $(".search-result");
+
+function appendTag(tag) {
     let html = `
-
-    <div class="pull-left">
-
-		<div>${data.body}</div>
-		<div>${data.country_name}</div>
-		<div>${data.name}</div>
-		<a href="/tags/${data.id}/posts">${data.tag_name}</a>
-    <a href="/posts/${data.id}">${data.body}</a>
+      <a href="tags/${tag.id}/posts" class="btn btn-default">${tag.tag_name}</a>
     `
-    searchResult.append(html);
+    search_list.append(html);
   }
 
-  function NoResult(message){
+//一致する結果がなかった場合の処理
+  function addNoTag() {
     let html = `
-    <div>${message}</div>
-    `
-    searchResult.append(html);
+      <div class=>
+        <p>検索結果はありませんでした。</p>
+      </div>
+    `;
+//作ったhtmlを入れる
+    search_list.append(html);
   }
+//検索欄に文字入力されるたびに処理を行う
+  $(".search-input").on("keyup", function() {
 
-  // フォームに入力すると発火する
-  inputForm.on('keyup', function(){
-    const target = $(this).val();
-    search(target);
+//検索欄に入力された文字をvalで取得し変数inputに代入
+      let input = $(".search-input").val();
+      $.ajax({
+      type: "GET", //httpメソッド(今回はget)
+      url: "/", //送る先のurl
+
+//keyを自分で決め(今回は"keyword"と定義)valueには先ほど検索欄から取得し代入したinputの値を使う
+      data: { keyword: input },
+      dataType: "json"
+    })
+
+
+//jbuilderファイルで作った配列を引数にしdone関数を起動
+.done(function(tags) {
+
+//if,else if,elseどの場合においても、処理後は、すでに検索欄に出力されている情報を削除する。
+        search_list.empty();
+
+//検索に一致するユーザーが０じゃない場合(いる場合)
+        if (tags.length !== 0) {
+
+//usersという配列をforEachで分解し、タグごとにaddTag関数に飛ばす(処理は後ほど)
+          tags.forEach(function(tag) {
+            appendTag(tag);
+          });
+
+//入力欄に文字が入力されてない場合処理を終了
+        } else if (input.length == 0) {
+          return false;
+
+//検索に一致するタグがいない場合はaddNoTagに飛ばす
+        } else {
+          addNoTag("一致する項目はありません");
+        }
+      })
+.fail(function() {
+        alert("通信エラーです。検索結果を表示できません。");
+      });
+
   });
-
-  // ajax処理
-  function search(target){
-    $.ajax({
-      type: 'GET',
-      url: '/',
-      data: {keyword: target},
-      dataType: 'json'
-    })
-    .done(function(data){
-      searchResult.empty(); //再度検索した際に前のデータを消す処理
-      if (data.length !== 0) {
-        data.forEach(function(data) { //dataは配列型に格納されているのでEach文で回す
-          builtHTML(data)
-        });
-      } else {
-        NoResult('検索結果が見つかりませんでした')
-      }
-    })
-    .fail(function(data){
-      alert('非同期通信に失敗しました');
-    })
-  }
 });
+
+

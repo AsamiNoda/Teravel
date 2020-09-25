@@ -1,22 +1,45 @@
-<h1>T＋eravel（ティーラベル）とは</h1>
-<p>Travel ＋eravel （トラベル＋エラベル）<br>
-行きたい場所を選べる、探せる、見つけられる</p>
+<div class="conteiner">
+	<h1 class="text-center"><img src="/assets/logo.png" alt="logo" class="logo-about" >って何？</h1>
+	<div class="text-center">
+		<p>T+eravel(ティーラベル）は、『旅をもっと自由に』をコンセプトに、旅の準備のお手伝いをします！</br>
+			いろいろな形の旅（Travel）が選べる（eravel）、T+eravelというウェブサイトです。<br></p>
+	</div>
+</div>
+
 
 <section class="about-explain">
-	<div class="animate-title">You can find</div>
+	<div class="about-content text-center">
+		<div class="title">You can find</div>
+		<img src="/assets/index.png" class="about-pic margin" >
+		<p class="text"><a href="/posts/">一覧ページ</a>では、並び替えて検索ができます。</p>
+	</div>
 </section>
 
 <section class="about-explain">
-	<div class="animate-title">You can save</div>
+	<div class="about-content text-center">
+		<div class="title">You can save</div>
+		<img src="/assets/user-show.png" class="about-pic margin" >
+		<p class="text"><%= link_to "マイページ", user_path(current_user.id) %>では、『いいね』した写真や保存した写真が確認できます。</br>また、フォローしたユーザーの写真の一覧も確認できます。</p>
+	</div>
 </section>
 
 <section class="about-explain">
-	<div class="animate-title">And go on an adventure into an unkonwn world!</div>
+	<div class="about-content text-center">
+		<div class="title">And go on an adventure into an unkonwn world!</div>
+		<p class="text">お気に入りの場所を見つけたら、まだ知らない世界に飛び出そう！</p>
+		<img src="/assets/world-map.png" class="about-pic margin" >
+	</div>
+	<div class="title"></div>
 </section>
 
+<div class="text-center">
+	<div class="margin30">
+		<p>T+eravel passportを作る</p>
+		<h4><%= link_to "Registration", new_user_registration_path, class: "btn-lg btn-success" %></h4>
+	</div>
+		<p class="">いますぐ旅行にチェックインする</p>
+		<h4><%= link_to "Check in", new_user_session_path, class: "btn-lg btn-primary" %></h4>
+	</div>
+</div>
 
-<p>T+eravel passportを作る</p>
-<%= link_to "registration", new_user_registration_path %>
-<p>いますぐ旅行にチェックインする</p>
-<%= link_to "Check_in", new_user_session_path %>
 

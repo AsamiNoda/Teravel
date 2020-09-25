@@ -79,3 +79,4 @@ gem 'font-awesome-sass'
 gem 'geocoder'
 gem "gmaps4rails"
 gem "gon"
+gem 'enum_help'

@@ -6,12 +6,12 @@ function initMap(){ //コールバック関数
   if(document.getElementById('map')){ //'map'というidを取得できたら実行
     map = new google.maps.Map(document.getElementById('map'), { //'map'というidを取得してマップを表示
       center: {lat: 35.6594666, lng: 139.7005536}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
-      zoom: 15, //拡大率（1〜21まで設定可能）
+      zoom: 13, //拡大率（1〜21まで設定可能）
     });
-  }else{ //'map'というidが無かった場合
+  }else{
     map = new google.maps.Map(document.getElementById('show_map'), { //'show_map'というidを取得してマップを表示
       center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
-      zoom: 15, //拡大率（1〜21まで設定可能）
+      zoom: 13, //拡大率（1〜21まで設定可能）
     });
 
     marker = new google.maps.Marker({ //GoogleMapにマーカーを落とす
@@ -40,5 +40,5 @@ function codeAddress(){ //コールバック関数
     } else {
       alert('該当する結果がありませんでした');
     }
-  });   
+  });
 }
