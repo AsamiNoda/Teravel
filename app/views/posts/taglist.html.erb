@@ -1,0 +1,11 @@
+<div class="container padding-top">
+	<div class="row">
+	<% @tag_list.each do |list| %>
+		<%= link_to list.tag_name, tag_posts_path(tag_id: list.id), class: "btn btn-default" %>
+	<% end %>
+
+	<h2>タグが<%= @tag.tag_name %>の投稿一覧</h2>
+
+	<%= render 'posts/index',posts: @posts %>
+	</div>
+</div>

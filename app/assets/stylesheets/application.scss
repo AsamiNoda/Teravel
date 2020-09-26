@@ -1,0 +1,193 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url(//fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+ * {
+  margin: 0;
+  padding: 0;
+}
+
+ body {
+   font-family: "M PLUS Rounded 1c","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+   padding-top: 65px;
+   color: #5e5e5e;
+   	&:visited {
+	color: #5e5e5e;
+	}
+	a {
+	color: #5e5e5e;
+	}
+	&:hover {
+  	text-decoration: none;
+  	}
+}
+
+
+
+main {
+padding-top:35px;
+	padding-bottom: 50px;
+}
+
+.margin30 {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+.margin {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.margin-top30 {
+	margin-top: 30px;
+}
+
+.margin-top60 {
+	margin-top: 60px;
+}
+
+.margin-top {
+	margin-top: 15px;
+}
+
+.margin-bottom {
+	margin-bottom: 10px;
+}
+
+.img {
+	object-fit: cover;
+		&:hover{
+		opacity: .5;
+		transition: transform 0.3s ease;
+		}
+	&-show {
+	width: 500px;
+	}
+}
+
+.update-img {
+	width: 300px;
+
+}
+
+
+
+/* ヘッダー */
+.logo {
+	width: 200px;
+	margin: 8px;
+	  &:hover {
+	  opacity: .6;
+	  text-decoration: none;
+	}
+}
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+  .logo {
+	width: 200px;
+	margin: 8px;
+	}
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .logo {
+	width: 200px;
+	margin: 8px;
+	}
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .logo {
+	width: 120px;
+	margin: 8px;
+	}
+}
+
+.img-rounded {
+	border-radius: 6px;
+	&:hover {
+  		opacity: 0.6;
+  		}
+	}
+
+.profile-image-icon {
+	margin-bottom: 10px;
+	border-radius: 10px;
+	border: solid 0.3px #E2E2E2;
+	 &:hover {
+  	opacity: 0.6;
+  	transition-duration: 0.3s;
+
+}
+    }
+
+.profile-name {
+  	text-decoration: none;
+  	padding-left: 10px;
+  	padding-top: 4px;
+  	padding-bottom: 10px;
+}
+
+li .icon {
+	font-size: 25px;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+.nav-dropdown {
+	margin-top: 15px;
+}
+
+.navbar {
+		background-color: #fff;
+}
+
+.navbar-default .navbar-nav li a {
+	color:#393F6A;
+}
+
+
+/* フッター */
+footer {
+	background-color: #fff;
+	height: 80px;
+	bottom: 0;
+ 	margin-bottom: 0;
+ 	border-top: solid 0.2px #e7e7e7;
+ 	padding-top:15px;
+	}
+.copyright {
+	opacity: 0.5;
+}
+
+.footer-text  {
+	opacity: 0.9;
+	color: #383838;
+	text-decoration: none;
+	&:visited {
+	color: #383838;
+	}
+	&:hover {
+  	opacity: 0.7;
+  	text-decoration: none;
+  	}
+}

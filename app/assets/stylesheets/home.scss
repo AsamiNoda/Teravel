@@ -1,0 +1,186 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ /* トップページ */
+.search-input {
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #354093;
+  display: block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.7em;
+  width: 600px;
+  overflow: hidden;
+  &:focus {
+	outline:0;
+  color: #354093;
+	box-shadow: 0 5px 5px 0 rgba(53, 64, 147, 0.3);
+  }
+}
+
+.img-zoom {
+  opacity: 1;
+
+  .inview & {
+    opacity: 1;
+    transition: transform 0.3s ease;
+    &:hover{
+    transform: scale(1.2);
+    }
+  }
+}
+
+.top-btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 0.3px solid #606060;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 20px;
+    &:hover {
+    text-decoration: none;
+    opacity: .8;
+    }
+}
+
+.top-headline {
+  height: 280px;
+  background-image: image-url("top.jpg");
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.top-head-text {
+  height: 280px;
+  background: rgba(255,255,255,0.3);
+}
+.top-head-text h2 {
+  color: #383838;
+  background-size: cover;
+  padding-top: 75px;
+}
+.search-box {
+  margin-top: 10px;
+}
+
+#world-map {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+   a {
+        transition: fill 0.3s linear;
+      &:hover {
+          opacity: .6;
+          text-decoration: none;
+      }
+    }
+}
+
+
+ /* アバウトページ */
+.about-explain {
+	position: relative;
+	height: 760px;
+	background-color: #77C8D0;
+  color: white;
+  .about-content {
+    padding-top: 80px;
+    .title {
+     font-size: 2em;
+      }
+    .about-pic {
+      width: 800px;
+    .text {
+      color: white;
+      }
+    }
+  }
+  &:nth-of-type(2) {
+    background-color: #D65A9C;
+  }
+  &:nth-of-type(3) {
+    background-color: #79B0E8;
+  }
+}
+
+
+
+.logo-about {
+  width: 250px;
+  padding-bottom:10px;
+}
+
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+    .about-explain {
+    position: relative;
+    height: 80vh;
+    background-color: #77C8D0;
+    color: white;
+    .about-content {
+      padding-top: 80px;
+      .title {
+       font-size: 2em;
+        }
+      .about-pic {
+        width: 800px;
+      .text {
+        color: white;
+        }
+      }
+    }
+  }
+}
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .about-explain {
+  position: relative;
+  height: 600px;
+  background-color: #77C8D0;
+  color: white;
+  .about-content {
+    padding-top: 80px;
+    .title {
+     font-size: 2em;
+      }
+    .about-pic {
+      width: 600px;
+      .text {
+        color: white;
+        }
+      }
+    }
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  .about-explain {
+  position: relative;
+  height: 400px;
+  background-color: #77C8D0;
+  color: white;
+  .about-content {
+    padding-top: 40px;
+    .title {
+      font-size: 1.5em;
+      }
+    .about-pic {
+      width: 380px;
+    .text {
+      color: white;
+      font-size: 10px;
+        }
+      }
+    }
+  }
+}

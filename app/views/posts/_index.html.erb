@@ -1,0 +1,29 @@
+<div class="row">
+<% posts.each do |post| %>
+<div class="col-sm-3 col-xs-4 show-pic-index">
+		<div class="inview show-pic">
+			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img index-img"), post_path(post) %>
+		</div>
+		<div class="col-xs-12">
+		<div><%= post.body %></div>
+		 <!--星評価-->
+		 <div id="star-rate-<%= post.id %>"></div>
+		  <script>
+		  $('#star-rate-<%= post.id %>').raty({
+		    size: 36,
+		    starOff:  '<%= asset_path('star-off.png') %>',
+		    starOn : '<%= asset_path('star-on.png') %>',
+		    starHalf: '<%= asset_path('star-half.png') %>',
+		    half: true,
+		    readOnly: true,
+		    score: <%= post.rate %>,
+		  });
+		  </script>
+		<!--/星評価-->
+		</div>
+</div>
+<% end %>
+
+
+
+</div>
