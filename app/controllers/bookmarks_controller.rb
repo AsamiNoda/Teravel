@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-before_action :set_post, only: [:create, :destroy]
+  before_action :set_post, only: [:create, :destroy]
   def create
     @post = Post.find(params[:post_id])
     bookmark = @post.bookmarks.new(user_id: current_user.id)
