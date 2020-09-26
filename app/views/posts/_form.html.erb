@@ -9,14 +9,14 @@
 
     <%= f.text_field :tag_name,value: tag_list, class: "form-control"  %>
 
-<p class="margin-top">エリア</p>
+<p class="margin-top">エリア <strong style="color:red">必須</strong></p>
 
 <%= f.select :area, Post.areas_i18n.keys.map { |k| [Post.areas_i18n[k], k]},{},{class: "form-control"} %>
 
 
 <div class="spot margin-top">
   <%= f.fields_for :spot do |s| %>
-    <%= s.label :address, "場所(Google Mapで検索)", class: 'spot__title' %>
+    <%= s.label :address, "場所(Google Mapで検索)", class: 'spot__title' %> <strong style="color:red">必須</strong>
     <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text form-control' %>
 
   <% end %>
@@ -26,14 +26,14 @@
 
 
 
-<p class="margin-top">撮影時期（年/月）</p>
+<p class="margin-top">撮影時期（年/月）<strong style="color:red">必須</strong></p>
   <%= f.date_select(
         :shooting_date,
         use_month_numbers: true,
-        start_year: 2000,
+        start_year: 2020,
         discard_day:true,
-        end_year: (Time.now.year - 0),
-        default: Date.new(2020, 1, 1),
+        end_year: 2000,
+        prompt:"--",
         date_separator: '/') %>
 
   <div>

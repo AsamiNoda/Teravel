@@ -1,4 +1,8 @@
-<h1 class="text-center">旅に出かけよう！</h1>
+<div class="top-headline">
+	<div class="text-center top-head-text">
+		<h2>まだ知らない世界に飛び出そう！</h2>
+	</div>
+</div>
 	<div class="margin-top30">
 		<h3 class="col-xs-offset-2 margin">人気の投稿から見つける</h3>
 		<ul class="slider">
@@ -13,7 +17,7 @@
 		<h3 class="col-xs-offset-2">キーワードから検索する</h3>
 		<div class="search-container">
 			<div class="search-form text-center">
-				<div class="">
+				<div class="search-box margin-top30">
 					<%= form_tag('/', method: :get, class:"search-form", placeholder:'',remote: true) do %>
 						<%= text_field_tag :body, :'', class: "search-input fa", placeholder: "\uF002", autocomplete:'off' %>
 					<% end %>
@@ -318,4 +322,5 @@
 	<%= link_to "すべての投稿を見る", posts_path, class: "pull-right top-btn" %>
 	</div>
 </div>
+
 

@@ -4,7 +4,7 @@ $(document).ready(function(){
     randomStart: true,
     infiniteLoop: true,
     auto: true,
-    speed: 2500,
+    speed: 3000,
     minSlides: 1, //最低限表示する数
     maxSlides: 8, //マックスで表示する数
     moveSlides: 1, //スライドをどのくらいの数を動かすか

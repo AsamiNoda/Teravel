@@ -11,6 +11,7 @@
     <%= include_gon %>
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
@@ -18,12 +19,12 @@
     <%= render 'layouts/header' %>
 
 
+    <main class="clearfix">
       <% flash.each do |key, value| %>
           <p class="alert alert-<%= key %>">
             <%= value %>
           </p>
       <% end %>
-    <main class="clearfix">
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>

@@ -15,7 +15,7 @@ ja:
         latitude: "緯度"
         longitude: "経度"
       post:
-        post_image_id: "写真"
+        post_image: "写真"
         rate: "評価"
         area: "地域"
         shooting_date: "撮影時期"

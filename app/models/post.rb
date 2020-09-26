@@ -9,7 +9,8 @@ class Post < ApplicationRecord
 	validates :body , length: {maximum: 100}
 	validates :post_image ,presence: true
 	validates :shooting_date,presence: true
-	validates :rate, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1}, presence: true
+	validates :area,presence: true
+	validates :rate, presence: true, numericality: {less_than_or_equal_to: 5, greater_than_or_equal_to: 1, message: "を１〜５で選択してください"}
   	has_one :spot, dependent: :destroy
   	accepts_nested_attributes_for :spot
 	def favorited_by?(user)

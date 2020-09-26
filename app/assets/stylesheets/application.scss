@@ -25,21 +25,24 @@
 }
 
  body {
-   font-family: "futura","Noto Sans Japanese","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
-   padding-top: 95px;
-   color: #383838;
+   font-family: "M PLUS Rounded 1c","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+   padding-top: 65px;
+   color: #5e5e5e;
    	&:visited {
-	color: #383838;
+	color: #5e5e5e;
 	}
 	a {
-	color: #383838;
+	color: #5e5e5e;
 	}
 	&:hover {
   	text-decoration: none;
   	}
 }
 
+
+
 main {
+padding-top:35px;
 	padding-bottom: 50px;
 }
 
@@ -69,7 +72,6 @@ main {
 .margin-bottom {
 	margin-bottom: 10px;
 }
-
 
 .img {
 	object-fit: cover;
@@ -121,6 +123,12 @@ main {
 	}
 }
 
+.img-rounded {
+	border-radius: 6px;
+	&:hover {
+  		opacity: 0.6;
+  		}
+	}
 
 .profile-image-icon {
 	margin-bottom: 10px;

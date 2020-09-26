@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container padding-top">
 	<div class="row">
 	<% @tag_list.each do |list| %>
 		<%= link_to list.tag_name, tag_posts_path(tag_id: list.id), class: "btn btn-default" %>
