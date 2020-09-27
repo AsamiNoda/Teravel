@@ -1,10 +1,10 @@
 <div class="container padding-top">
   <h1>T+eravel passport</h1>
   <div class="clearfix margin-top">
-    <div class="pull-left col-xs-3">
+    <div class="pull-left col-md-3 col-sm-12">
       <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size:"200x200", class: "img-rounded" %>
     </div>
-    <div class="pull-left col-xs-9">
+    <div class="pull-left col-md-9 col-sm-12">
     <h3><%= @user.name %></h3>
     <div>
     <%= @user.introduction %>

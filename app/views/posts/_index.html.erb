@@ -1,6 +1,6 @@
 <div class="row">
 <% posts.each do |post| %>
-<div class="col-sm-3 col-xs-4 show-pic-index">
+<div class="col-md-3 col-sm-4 col-xs-5 show-pic-index">
 		<div class="inview show-pic">
 			<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", fallback: "no_image.jpeg", size:"300x300", class: "img-rounded img index-img"), post_path(post) %>
 		</div>
