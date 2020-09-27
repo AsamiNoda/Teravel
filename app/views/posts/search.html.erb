@@ -1,8 +1,12 @@
 <div class="container">
   <div class="row">
       <div class="row">
-	<div class="container"><h2><%= @post.area_i18n %>の投稿一覧</h2></div>
-      <%= render 'posts/index',posts: @posts %>
+		<% if @post.nil? %>
+			<p>まだこの地域の投稿はありません。</p>
+		<% else %>
+			<div class="container"><h2><%= @post.area_i18n %>の投稿一覧</h2></div>
+      		<%= render 'posts/index',posts: @posts %>
+      <% end %>
       </div>
   </div>
 </div>
