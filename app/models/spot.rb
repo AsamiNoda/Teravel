@@ -9,12 +9,12 @@ class Spot < ApplicationRecord
 
  def check_latitude
 	if self.latitude.nil?
-		errors.add(:latitude,  "の値が不正です")
+		errors.add(:latitude,  "マップから別の場所を選択してください")
 	end
   end
   def check_longitude
   	if self.longitude.nil?
-  		errors.add(:longitude,  "の値が不正です")
+  		errors.add(:longitude,  "マップから別の場所を選択してください")
   	end
   end
 
