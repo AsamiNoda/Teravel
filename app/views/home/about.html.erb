@@ -1,5 +1,5 @@
 <div class="conteiner">
-	<h1 class="text-center"><img src="<%= asset_path "logo.png" %>" alt="logo" class="logo" />って何？</h1>
+	<h1 class="text-center"><img src="<%= asset_path "logo.png" %>" alt="logo" class="logo" >って何？</h1>
 	<div class="text-center">
 		<p>T+eravel(ティーラベル）は、『旅をもっと自由に』をコンセプトに、旅の準備のお手伝いをします！</br>
 			いろいろな旅（Travel）が選べる（eravel）ウェブサイトです。<br></p>
@@ -10,7 +10,7 @@
 <section class="about-explain">
 	<div class="about-content text-center">
 		<div class="title">You can find</div>
-		<img src="<%= asset_path "index.png" %>" class="about-pic margin" />
+		<%=  image_tag "index2.jpg", class: "about-pic margin" %>
 		<p class="text"><%= link_to "一覧ページ", posts_path, class: "btn btn-default btn-sm" %>では、並び替えて検索ができます。</p>
 	</div>
 </section>
@@ -18,7 +18,7 @@
 <section class="about-explain">
 	<div class="about-content text-center">
 		<div class="title">You can save</div>
-		<img src="<%= asset_path "show.png" %>" class="about-pic margin" />
+		<%=  image_tag "user-show.jpg", class: "about-pic margin" %>
 		<p class="text"><%= link_to "マイページ", user_path(current_user.id), class: "btn btn-default btn-sm" %>では、『いいね』した写真や保存した写真が確認できます。</br>また、フォローしたユーザーの写真の一覧も確認できます。</p>
 	</div>
 </section>
@@ -27,7 +27,8 @@
 	<div class="about-content text-center">
 		<div class="title">And go on an adventure into an unkonwn world!</div>
 		<p class="text">お気に入りの場所を見つけたら、まだ知らない世界に飛び出そう！</p>
-		<img src="<%= asset_path "world-map.png" %>" class="about-pic margin" />
+		<%=  image_tag "world-map.png",  class: "about-pic margin" %>
+
 	</div>
 	<div class="title"></div>
 </section>
