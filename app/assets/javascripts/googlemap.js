@@ -1,6 +1,7 @@
 let map //変数の定義
 let geocoder //変数の定義
 
+
 function initMap(){ //コールバック関数
   geocoder = new google.maps.Geocoder() //GoogleMapsAPIジオコーディングサービスにアクセス
   if(document.getElementById('map')){ //'map'というidを取得できたら実行
@@ -9,6 +10,16 @@ function initMap(){ //コールバック関数
       zoom: 13, //拡大率（1〜21まで設定可能）
     });
   }else{
+    let gon = {
+      lat: 0, //document.getElementById('lat'),
+      lng: 0  //document.getElementById('lng')
+    };
+    if (document.getElementById('lat')) {
+      gon.lat = parseFloat(document.getElementById('lat').value);
+    }
+    if (document.getElementById('lng')) {
+      gon.lng = parseFloat(document.getElementById('lng').value);
+    }
     map = new google.maps.Map(document.getElementById('show_map'), { //'show_map'というidを取得してマップを表示
       center: {lat: gon.lat, lng: gon.lng}, //controllerで定義した変数を緯度・経度の値とする（値はDBに入っている）
       zoom: 13, //拡大率（1〜21まで設定可能）
@@ -22,6 +33,7 @@ function initMap(){ //コールバック関数
 }
 
 function codeAddress(){ //コールバック関数
+  alert(1);
   let inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) { //ジオコードしたい住所を引数として渡す
