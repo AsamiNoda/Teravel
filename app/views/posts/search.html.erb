@@ -2,7 +2,7 @@
   <div class="row">
       <div class="row">
 		<% if @post.nil? %>
-			<p>まだこの地域の投稿はありません。</p>
+			<h4 class="margin-top30">まだこの地域の投稿はありません。</h4>
 		<% else %>
 			<div class="container"><h2><%= @post.area_i18n %>の投稿一覧</h2></div>
       		<%= render 'posts/index',posts: @posts %>
