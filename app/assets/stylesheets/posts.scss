@@ -31,9 +31,15 @@
   color: #393F6A;
 }
 
+
+.img {
+    width: 270px;
+    height: 270px;
+}
+
 /* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
 @media screen and (max-width:1024px) {
-  .index-img{
+  .img{
   	width: 250px;
   	height: 250px;
   }
@@ -47,18 +53,48 @@
   	height: 280px;
   	width: 500px;
 	}
-  .index-img{
+  .img{
   	width: 200px;
   	height: 200px;
 
   }
 }
 
+.star-body {
+  height: 100px;
+}
+
+@media screen and (max-width:640px) {
+  .img{
+    width: 160px;
+    height: 160px;
+  }
+    .star-body {
+  height: 110px;
+}
+}
+
+@media screen and (max-width:540px) {
+  .img{
+    width: 150px;
+    height: 150px;
+  }
+    .star-body {
+  height: 130px;
+}
+
+}
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
-  .index-img{
+  .img{
   	width: 150px;
   	height: 150px;
   	}
 }
 
+@media screen and (max-width:400px) {
+  .img{
+    width: 120px;
+    height: 120px;
+    }
+}

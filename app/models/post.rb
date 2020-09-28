@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	has_many :tag_maps, dependent: :destroy
 	has_many :tags, through: :tag_maps, dependent: :destroy
 	attachment :post_image, destroy: false
-	validates :body , length: {maximum: 100}
+	validates :body , length: {maximum: 60}
 	validates :post_image ,presence: true
 	validates :shooting_date,presence: true
 	validates :area,presence: true
