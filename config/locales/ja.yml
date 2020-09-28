@@ -9,7 +9,14 @@ ja:
         Europe: "ヨーロッパ"
         Africa: "アフリカ"
   activerecord:
+    models:
+      user: "ユーザー"
     attributes:
+      user:
+        name: "名前"
+        profile_image_id: "プロフィール写真"
+        birthyear: "誕生年"
+        introduction: "自己紹介"
       spot:
         address: "場所"
         latitude: "緯度"
@@ -19,8 +26,3 @@ ja:
         rate: "評価"
         area: "地域"
         shooting_date: "撮影時期"
-      user:
-        name: "名前"
-        profile_image_id: "プロフィール写真"
-        birthyear: "誕生年"
-        introduction: "自己紹介"
