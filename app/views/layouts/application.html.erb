@@ -20,11 +20,9 @@
 
     <main class="clearfix">
       <% flash.each do |key, value| %>
-        <div class="alert alert-warning">
-          <p class="alert alert-<%= key %>">
+          <div class="alert alert-<%= key %>">
             <%= value %>
-          </p>
-        </div>
+          </div>
       <% end %>
       <%= yield %>
     </main>
