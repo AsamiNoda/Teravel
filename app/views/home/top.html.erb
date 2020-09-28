@@ -5,13 +5,13 @@
 </div>
 	<div class="margin-top30 container">
 		<h3 class="col-xs-offset-1 margin">人気の投稿から見つける</h3>
+	</div>
 		<ul class="slider">
 			<% @all_ranks.each do |post| %>
 				<li class="inview">
 					<%= link_to attachment_image_tag(post,:post_image, format: "jpeg", class: "img-zoom bx-wrapper"), post_path(post) %></li>
 			<% end %>
 		</ul>
-	</div>
 
 	<div class="margin-top30 container">
 		<h3 class="col-xs-offset-1">キーワードから検索する</h3>
