@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :search]
+  before_action :authenticate_user!, except: [:index, :search, :taglist]
   def index
     @posts = Post.order(created_at: :desc)
     @tag_list = Tag.all
