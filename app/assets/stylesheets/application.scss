@@ -103,8 +103,21 @@ main {
 	h3 {
 	font-size: 18px;
 	}
-	.footer-txt8 {
+	.footer-txt, .top-btn {
 	font-size: 10px;
+	}
+}
+
+
+@media screen and (max-width:425px) {
+	h2 {
+	font-size: 18px;
+	}
+	h3 {
+	font-size: 14px;
+	}
+	.footer-txt, .top-btn {
+	font-size: 6px;
 	}
 }
 
