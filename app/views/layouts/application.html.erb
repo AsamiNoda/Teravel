@@ -25,6 +25,13 @@
           </div>
       <% end %>
       <%= yield %>
+
+    <span id="back">
+      <a href="#">
+        <%=  image_tag "topbtn.png" %>
+      </a>
+    </span>
+
     </main>
     <%= render 'layouts/footer' %>
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"] %>&callback=initMap"></script>
