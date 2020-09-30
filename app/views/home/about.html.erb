@@ -1,7 +1,7 @@
 <div class="conteiner about-page">
 	<h2 class="text-center"><img src="<%= asset_path "logo.png" %>" alt="logo" class="logo" >って何？</h2>
 	<div class="text-center">
-		<p>T+eravel(ティーラベル）は、『旅をもっと自由に』をコンセプトに、旅の準備のお手伝いをします！</br>
+		<p class="about-txt">T+eravel(ティーラベル）は、『旅をもっと自由に』をコンセプトに、旅の準備のお手伝いをします！</br>
 			いろいろな旅（Travel）が選べる（eravel）ウェブサイトです。<br></p>
 	</div>
 </div>
@@ -11,7 +11,7 @@
 	<div class="about-content text-center">
 		<div class="title">You can find</div>
 		<%=  image_tag "index2.jpg", class: "about-pic margin" %>
-		<p><%= link_to "一覧ページ", posts_path, class: "btn btn-default btn-sm" %>では、並び替えて検索ができます。</p>
+		<p class="about-txt"><%= link_to "一覧ページ ", posts_path %>では、並び替えて検索ができます。</p>
 	</div>
 </section>
 
@@ -19,14 +19,14 @@
 	<div class="about-content text-center">
 		<div class="title">You can save</div>
 		<%=  image_tag "user-show.jpg", class: "about-pic margin" %>
-		<p>マイページでは、『いいね』した写真や保存した写真が確認できます。</br>また、フォローしたユーザーの写真の一覧も確認できます。</p>
+		<p class="about-txt">マイページでは、『いいね』した写真や保存した写真が確認できます。</br>また、フォローしたユーザーの写真の一覧も確認できます。</p>
 	</div>
 </section>
 
 <section class="about-explain">
 	<div class="about-content text-center">
 		<div class="title">And go on an adventure into an unkonwn world!</div>
-		<p>お気に入りの場所を見つけたら、まだ知らない世界に飛び出そう！</p>
+		<p class="about-txt">お気に入りの場所を見つけたら、まだ知らない世界に飛び出そう！</p>
 		<%=  image_tag "world-map.png",  class: "about-pic margin" %>
 
 	</div>

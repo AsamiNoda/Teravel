@@ -154,9 +154,10 @@
       }
     }
   }
-  .about-page p {
+  .about-txt {
   font-size: 12px;
   }
+
 }
 
 @media screen and (max-width:639px) {
@@ -179,12 +180,12 @@
       }
     }
   }
-  .about-page p {
-  font-size: 12px;
+  .about-txt {
+  font-size: 10px;
   }
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:450px) {
   .about-explain {
   position: relative;
   height: 350px;
@@ -204,7 +205,7 @@
       }
     }
   }
-  .about-page p {
-  font-size: 10px;
+  .about-txt {
+  font-size: 8px;
   }
 }
