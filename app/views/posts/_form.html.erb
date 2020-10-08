@@ -3,6 +3,17 @@
  <%= render 'layouts/error',model: f.object %>
     <%= attachment_image_tag post, :post_image, id: :img_prev, fallback: "no_image.jpg", class: "update-img" %>
     <%= f.attachment_field :post_image, id: :image %>
+
+
+<div class="resultArea hidden">
+    <!--- ラベル検出の結果を表示 --->
+    <table id="resultTable">
+        <thead><tr><td>写真から場所を検索すると...</td></tr></thead>
+        <tbody id="resultBox"></tbody>
+    </table>
+</div>
+
+
   <p class="margin-top">説明</p>
     <%= f.text_area :body, class: "form-control"  %>
  <p class="margin-top">タグ (複数の場合は半角の空欄を入れてください)</p>
@@ -78,3 +89,4 @@ $(function() {
  });
 });
 </script>
+

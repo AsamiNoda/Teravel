@@ -39,6 +39,7 @@ class PostsController < ApplicationController
     @post = Post.new
     @tag_list = @post.tags.pluck(:tag_name).split(nil)
     @post.build_spot
+    gon.my_private_key = ENV["GOOGLE_API_KEY"]
   end
 
   def create
@@ -46,6 +47,12 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split(nil)
       if @post.save
+        landmarks = Vision.get_image_data(@post.post_image)
+          if !landmarks.nil?
+          landmarks.each do |landmark|
+            @post.landmarks.create(name: landmark)
+          end
+        end
         @post.save_tag(tag_list)
         flash[:success] = "写真が保存されました！"
         redirect_to @post
@@ -57,6 +64,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:tag_name).split(nil)
+    gon.my_private_key = ENV["GOOGLE_API_KEY"]
   end
 
   def update
