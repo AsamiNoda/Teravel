@@ -86,3 +86,4 @@ gem 'geocoder'
 gem "gmaps4rails"
 gem "gon"
 gem 'enum_help'
+gem 'google-cloud-vision', require: false
