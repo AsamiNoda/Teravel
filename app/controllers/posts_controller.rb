@@ -47,12 +47,6 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split(nil)
       if @post.save
-        landmarks = Vision.get_image_data(@post.post_image)
-          if !landmarks.nil?
-          landmarks.each do |landmark|
-            @post.landmarks.create(name: landmark)
-          end
-        end
         @post.save_tag(tag_list)
         flash[:success] = "写真が保存されました！"
         redirect_to @post
