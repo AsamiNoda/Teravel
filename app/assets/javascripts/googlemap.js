@@ -14,6 +14,9 @@ function initMap(){
       lat: 0,
       lng: 0
     };
+    if (document.getElementById('lat') == null || document.getElementById('lng') == null) {
+      return;
+    }
     if (document.getElementById('lat')) {
       gon.lat = parseFloat(document.getElementById('lat').value);
     }
@@ -31,6 +34,46 @@ function initMap(){
     });
   }
 }
+/*
+function initMap(){
+  getcoder = new google.maps.Getcoder();
+  let gon = {
+    lat: null, lng: null
+  };
+  let map = null;
+  let div = null;
+  let marker = false;
+  if (document.getElementById('map')) {
+    gon.lat = 35.6594666;
+    gon.lng = 139.7005536;
+    div = document.getElementById('map');
+  } else {
+    marker = true;
+    gon.lat = getFloatValue('lat');
+    gon.lng = getFloatValue('lng');
+    div = document.getElementById('show_map');
+  }
+  if (gon.lat == null || gon.lng == null) {
+    return;
+  }
+  map = new google.maps.Map(div, {center: gon, zoom:13,});
+
+  if (marker != false) {
+    marker = new google.maps.Marker({position:gon, map:map});
+  }
+}
+
+function getFloatValue( var element )
+{
+  if (element == null || document.getElementById(element) == null) {
+    return null;
+  }
+  return parseFloat(document.getElementById(element));
+}
+
+*/
+
+
 
 function codeAddress(){
 
