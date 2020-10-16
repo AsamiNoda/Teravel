@@ -55,12 +55,25 @@
 
 .top-headline {
   height: 100px;
+  padding-top: 10px;
+}
+.top-head-text {
+    background-color: #58b5c3;
+    width: 60%;
+    border-radius: 40px;
+}
+.top-head-text h2 {
+  color: #fff;
+  background-size: cover;
+  padding-top: 25px;
+  padding-bottom:25px;
+
 }
 
-.top-head-text h2 {
-  color: #383838;
-  background-size: cover;
-  padding-top: 30px;
+@media screen and (max-width:639px) {
+  .top-head-text h2{
+  font-size: 20px;
+  }
 }
 .search-box {
   margin-top: 10px;
