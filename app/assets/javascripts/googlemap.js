@@ -36,7 +36,7 @@ function initMap(){
 }
 /*
 function initMap(){
-  getcoder = new google.maps.Getcoder();
+  getcoder = new google.maps.Geocoder();
   let gon = {
     lat: null, lng: null
   };
@@ -63,8 +63,7 @@ function initMap(){
   }
 }
 
-function getFloatValue( var element )
-{
+function getFloatValue( var element ){
   if (element == null || document.getElementById(element) == null) {
     return null;
   }
